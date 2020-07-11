@@ -1,0 +1,80 @@
+{
+  "dynlayouts": [
+    {
+      "item1": {
+        "type": "form",
+        "name": "item1",
+        "method": "post",
+        "submitTo": "https://abc/item1",
+        "fields": [
+          {
+            "name": "itemName",
+            "label": "Item name",
+            "type": "text",
+            "required": "yes"
+          },
+          {
+            "name": "category",
+            "label": "Category",
+            "type": "choice",
+            "required": "yes",
+            "options": "category1|category2"
+          },
+          {
+            "name": "qty",
+            "label": "Quantity",
+            "type": "numeric",
+            "required": "no"
+          }
+        ]
+      },
+      "item2": {
+        "type": "form",
+        "name": "item2",
+        "method": "post",
+        "submitTo": "https://abc/item2",
+        "fields": [
+          {
+            "name": "item123",
+            "label": "Item code",
+            "type": "numeric",
+            "required": "yes"
+          },
+          {
+            "name": "qty123",
+            "label": "Quantity123",
+            "type": "text",
+            "required": "yes"
+          }
+        ]
+      },
+      "item3": {
+        "type": "form",
+        "name": "item3",
+        "method": "post",
+        "submitTo": "https://abc/item3",
+        "fields": [
+          {
+            "name": "category",
+            "label": "Category",
+            "type": "choice",
+            "required": "yes",
+            "options": "product1|product2"
+          },
+          {
+            "name": "date1",
+            "label": "Date",
+            "type": "date",
+            "required": "yes"
+          },
+          {
+            "name": "item12",
+            "label": "Item12",
+            "type": "text",
+            "required": "yes"
+          }
+        ]
+      }
+    }
+  ]
+}

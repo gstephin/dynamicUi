@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">dynamicLayout</string>
+    <string name="select_a_item">Select a Item</string>
+    <string name="date">Date</string>
+    <string name="quantity">Quantity</string>
+    <string name="submit">Submit</string>
+</resources>
