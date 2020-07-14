@@ -1,0 +1,74 @@
+{
+  "banners": {
+    "type": "horizontal scroll",
+    "width": "100%",
+    "height": "30%",
+    "links": [
+      "R.drawable.banner_three.jpeg",
+      "R.drawable.banner_one.png",
+      "R.drawable.banner_two.jpg"
+    ]
+  },
+  "headers": [
+    {
+      "title": "product123",
+      "type": "horizontal scroll",
+      "links": [
+        {
+          "width": "35%",
+          "height": "30%",
+          "imageLink": "http://abc/product1.png",
+          "title": "products",
+          "description": "",
+          "onClick": "http://abc/product1.html"
+        },
+        {
+          "width": "35%",
+          "height": "30%",
+          "imageLink": "http://abc/product2.png",
+          "title": "products",
+          "description": "",
+          "onClick": "http://abc/product2.html"
+        },
+        {
+          "width": "35%",
+          "height": "30%",
+          "imageLink": "http://abc/product3.png",
+          "title": "products",
+          "description": "",
+          "onClick": "http://abc/product3.html"
+        },
+        {
+          "width": "35%",
+          "height": "30%",
+          "imageLink": "http://abc/product4.png",
+          "title": "products",
+          "description": "",
+          "onClick": "http://abc/product4.html"
+        }
+      ]
+    },
+    {
+      "title": "product123",
+      "type": "horizontal fixed",
+      "links": [
+        {
+          "width": "50%",
+          "height": "30%",
+          "imageLink": "http://abc/product1.png",
+          "title": "products",
+          "description": "",
+          "onClick": "http://abc/product1.html"
+        },
+        {
+          "width": "50%",
+          "height": "30%",
+          "imageLink": "http://abc/product2.png",
+          "title": "products",
+          "description": "",
+          "onClick": "http://abc/product2.html"
+        }
+      ]
+    }
+  ]
+}

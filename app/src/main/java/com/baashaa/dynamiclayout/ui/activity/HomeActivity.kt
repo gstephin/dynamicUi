@@ -1,18 +1,16 @@
 package com.baashaa.dynamiclayout.ui.activity
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.baashaa.dynamiclayout.R
-import com.baashaa.dynamiclayout.contsants.Constants.INTENT_DATA
-import com.baashaa.dynamiclayout.model.MyDeserializer
-import com.baashaa.dynamiclayout.model.ProductItem
+import com.baashaa.dynamiclayout.model.HomeModel
+import com.baashaa.dynamiclayout.ui.adapter.RecyclerHeaderAdapter
+import com.baashaa.dynamiclayout.ui.adapter.ViewPagerAdapter
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
 
 
@@ -21,31 +19,22 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "dynlayout.json")
+        val jsonFileString = getJsonDataFromAsset(applicationContext, "home.json")
 
-        val gson: Gson = GsonBuilder()
-            .registerTypeAdapter(ProductItem::class.java, MyDeserializer())
-            .create()
+        val gson = Gson()
+        val listPersonType = object : TypeToken<HomeModel>() {}.type
 
-        val productItem: ProductItem = gson.fromJson(jsonFileString, ProductItem::class.java)
-        val items = arrayListOf<String>()
+        val homeModel: HomeModel = gson.fromJson(jsonFileString, listPersonType)
 
-        productItem.list?.forEachIndexed { _, item ->
-            item?.name?.let { items.add(it) }
-        }
-        val editText: AutoCompleteTextView = findViewById(R.id.actv)
-        val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
-            this,
-            R.layout.custom_list_item, R.id.tvListItem, items
-        )
-        editText.setAdapter(adapter)
-        editText.onItemClickListener =
-            AdapterView.OnItemClickListener { _, _, position, id ->
-                val intent = Intent(this, ItemDetailActivity::class.java)
-                intent.putExtra(INTENT_DATA, productItem.list?.get(position))
-                startActivity(intent)
-            }
+        val adapter = ViewPagerAdapter(homeModel.banners?.links, this)
+        pager.adapter = adapter
+        indicator.setViewPager(pager)
+        adapter.registerDataSetObserver(indicator.dataSetObserver)
 
+
+        val adapterRecycler = RecyclerHeaderAdapter(homeModel.headers)
+        rvItems?.layoutManager = LinearLayoutManager(this)
+        rvItems.adapter = adapterRecycler
     }
 
     private fun getJsonDataFromAsset(context: Context, fileName: String): String? {

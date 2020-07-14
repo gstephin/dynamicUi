@@ -88,8 +88,8 @@ class RecyclerItemAdapter(
             setEditTextWatcher(position, editText)
 
             editText.onItemClickListener =
-                AdapterView.OnItemClickListener { _, _, position, _ ->
-                    editText.setText(list[position])
+                AdapterView.OnItemClickListener { _, _, pos, _ ->
+                    editText.setText(list[pos])
 
                 }
         }
@@ -114,9 +114,9 @@ class RecyclerItemAdapter(
             setEditTextWatcher(position, editText)
             ivDate.setOnClickListener {
                 val newCalendar: Calendar = Calendar.getInstance()
-                val StartTime = DatePickerDialog(
+                DatePickerDialog(
                     itemView.context,
-                    OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
                         val newDate: Calendar = Calendar.getInstance()
                         newDate.set(year, monthOfYear, dayOfMonth)
                         editText.setText(
