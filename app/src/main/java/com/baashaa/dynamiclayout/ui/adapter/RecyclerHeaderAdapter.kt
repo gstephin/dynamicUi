@@ -3,6 +3,7 @@ package com.baashaa.dynamiclayout.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.baashaa.dynamiclayout.R
@@ -18,6 +19,7 @@ class RecyclerHeaderAdapter(val list: List<Header>?) :
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val rvChild: RecyclerView = itemView.rvChild
+        val tvTitle: TextView = itemView.tvTitle
 
     }
 
@@ -33,6 +35,7 @@ class RecyclerHeaderAdapter(val list: List<Header>?) :
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val get = list!![position]
+        holder.tvTitle.text = get.title
         val childLayoutManager =
             LinearLayoutManager(holder.rvChild.context, RecyclerView.HORIZONTAL, false)
         holder.rvChild.apply {
